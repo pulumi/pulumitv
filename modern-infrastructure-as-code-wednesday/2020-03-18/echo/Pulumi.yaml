@@ -1,0 +1,8 @@
+name: echo
+runtime: nodejs
+description: Basic example of using AWS API Gateway
+template:
+  config:
+    aws:region:
+      description: The AWS region to deploy into
+      default: us-east-2
