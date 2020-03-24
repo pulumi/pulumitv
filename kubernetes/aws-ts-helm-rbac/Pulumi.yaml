@@ -1,0 +1,3 @@
+name: aws-ts-helm-rbac
+description: Deploys a Kubernetes cluster and a fluentd-cloudwatch Helm chart using RBAC
+runtime: nodejs
