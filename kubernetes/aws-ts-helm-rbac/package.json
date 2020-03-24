@@ -1,0 +1,12 @@
+{
+  "name": "aws-ts-helm-rbac",
+  "devDependencies": {
+    "typescript": "^3.0.0"
+  },
+  "dependencies": {
+    "@pulumi/eks": "^0.18.24",
+    "@pulumi/aws": "^1.27.0",
+    "@pulumi/kubernetes": "1.5.7",
+    "@pulumi/pulumi": "^1.13.0"
+  }
+}
