@@ -19,6 +19,7 @@ const policies = new PolicyPack("ec2", {
             name: "required-tags",
             description: "The folowing tags are required: Name, project, stack.",
             enforcementLevel: "mandatory",
+            // check each resource of type aws.ec2.Instance
             validateResource: validateTypedResource(aws.ec2.Instance, (it, _, reportViolation) => {
                 const tags = it.tags || {};
 
