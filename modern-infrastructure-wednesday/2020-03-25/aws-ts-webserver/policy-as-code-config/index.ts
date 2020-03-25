@@ -37,6 +37,7 @@ new PolicyPack("ec2-config", {
                     },
                 },
             },
+            // check all resources in stack to do an aggregate count of resources of type aws.ec2.Instance
             validateStack: (args, reportViolation) => {
                 const { maximumInstanceCount } = args.getConfig<{ maximumInstanceCount: number }>();
                 const instances = args.resources.filter(it => it.isType(aws.ec2.Instance))
