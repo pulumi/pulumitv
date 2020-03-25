@@ -8,6 +8,7 @@ const policies = new PolicyPack("ec2", {
             name: "discouraged-ec2-public-ip-address",
             description: "Associating public IP addresses is discouraged.",
             enforcementLevel: "advisory",
+            // check each resource of type aws.ec2.Instance
             validateResource: validateTypedResource(aws.ec2.Instance, (it, _, reportViolation) => {
                 if (it.associatePublicIpAddress !== false) {
                     reportViolation("`associatePublicIpAddresss` should be false");
