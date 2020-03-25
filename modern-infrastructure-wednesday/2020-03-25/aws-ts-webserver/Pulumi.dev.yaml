@@ -1,0 +1,4 @@
+config:
+  aws:region: us-west-2
+  demo-aws-ts-webserver:instanceCount: "3"
+  demo-aws-ts-webserver:instanceType: t3.medium

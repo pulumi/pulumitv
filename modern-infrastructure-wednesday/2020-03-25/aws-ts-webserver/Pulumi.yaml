@@ -1,0 +1,3 @@
+name: demo-aws-ts-webserver
+runtime: nodejs
+description: A minimal AWS TypeScript Pulumi program

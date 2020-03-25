@@ -1,0 +1,11 @@
+{
+    "allowed-instance-classes": {
+        "allowedInstanceClasses": [
+            "t2",
+            "t3"
+        ]
+    },
+    "maximum-instance-count": {
+        "maximumInstanceCount": 2
+    }
+}
