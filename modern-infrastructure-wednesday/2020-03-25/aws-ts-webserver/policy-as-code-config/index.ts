@@ -17,6 +17,7 @@ new PolicyPack("ec2-config", {
                     },
                 },
             },
+            // check each resource of type aws.ec2.Instance
             validateResource: validateResourceOfType(aws.ec2.Instance, (it, args, reportViolation) => {
                 const { allowedInstanceClasses } = args.getConfig<{ allowedInstanceClasses: string[] }>();
                 const instanceClass = it.instanceType.substring(0, it.instanceType.indexOf("."));
