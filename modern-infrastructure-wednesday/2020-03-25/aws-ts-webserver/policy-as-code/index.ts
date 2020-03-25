@@ -56,6 +56,7 @@ const policies = new PolicyPack("ec2", {
             name: "prohibited-services-iot",
             description: "Use of IOT services is prohibited.",
             enforcementLevel: "mandatory",
+            // check each resource to validate resource package (e.g. service)
             validateResource: (args, reportViolation) => {
                 if (args.type.startsWith("aws:iot")) {
                     reportViolation(`[${args.type}] was found`);
