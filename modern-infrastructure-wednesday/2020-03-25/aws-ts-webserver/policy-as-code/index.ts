@@ -42,6 +42,7 @@ const policies = new PolicyPack("ec2", {
             name: "discouraged-public-internet",
             description: "Ingress rules with public internet access are discouraged.",
             enforcementLevel: "advisory",
+            // check each resource of type aws.ec2.SecurityGroup
             validateResource: validateTypedResource(aws.ec2.SecurityGroup, (it, _, reportViolation) => {
                 (it.ingress || []).forEach(ingressRule =>
                     (ingressRule.cidrBlocks || []).forEach(cidr => {
