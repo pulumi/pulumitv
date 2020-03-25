@@ -1,5 +1,0 @@
-config:
-  aws:region: us-west-2
-  demo-aws-ts-webserver:creator: unknown
-  demo-aws-ts-webserver:instanceCount: "2"
-  demo-aws-ts-webserver:projectName: demo
