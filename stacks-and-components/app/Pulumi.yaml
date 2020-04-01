@@ -1,0 +1,3 @@
+name: code-struture-app
+description: Deploys a Kubernetes app on a GKE cluster.
+runtime: nodejs
