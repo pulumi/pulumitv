@@ -1,0 +1,12 @@
+{
+    "name": "guard-duty",
+    "devDependencies": {
+        "@types/node": "^8.0.0"
+    },
+    "dependencies": {
+        "@pulumi/aws": "^1.0.0",
+        "@pulumi/awsx": "^0.18.10",
+        "@pulumi/pulumi": "^1.0.0",
+        "axios": "^0.19.2"
+    }
+}
