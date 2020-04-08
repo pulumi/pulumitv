@@ -1,0 +1,3 @@
+name: anomaly-detection
+runtime: nodejs
+description: Anomaly Detection Part 2
