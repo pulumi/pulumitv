@@ -1,0 +1,3 @@
+name: intro-to-kx
+description: Deploys a Kubernetes app in various ways using the Kubernetes SDKs
+runtime: nodejs
