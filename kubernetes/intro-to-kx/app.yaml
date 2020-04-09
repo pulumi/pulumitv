@@ -1,0 +1,93 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: app-yaml
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: app-yaml
+  template:
+    metadata:
+      labels:
+        app: app-yaml
+    spec:
+      containers:
+      - env:
+        - name: DATA
+          valueFrom:
+            configMapKeyRef:
+              key: config
+              name: cm
+        - name: PASSWORD
+          valueFrom:
+            secretKeyRef:
+              key: password
+              name: secret
+        image: nginx
+        name: nginx
+        ports:
+        - containerPort: 80
+          name: http
+          protocol: TCP
+        resources:
+          requests:
+            cpu: 50m
+            memory: 20Mi
+        volumeMounts:
+        - mountPath: /data
+          name: data
+      volumes:
+      - name: data
+        persistentVolumeClaim:
+          claimName: data
+
+---
+
+apiVersion: v1
+data:
+  config: very important data
+kind: ConfigMap
+metadata:
+  name: cm
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: app-yaml
+spec:
+  ports:
+  - name: http
+    nodePort: 30826
+    port: 80
+    protocol: TCP
+    targetPort: 80
+  selector:
+    app: app-yaml
+  type: LoadBalancer
+
+---
+
+apiVersion: v1
+data:
+  password: IUVhdmFXQmp2OVUo
+kind: Secret
+metadata:
+  name: secret
+type: Opaque
+
+---
+
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: data
+spec:
+  accessModes:
+  - ReadWriteOnce
+  resources:
+    requests:
+      storage: 1Gi
+  storageClassName: standard

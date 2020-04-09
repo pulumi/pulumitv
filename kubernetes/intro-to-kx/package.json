@@ -1,0 +1,12 @@
+{
+    "name": "intro-to-kx",
+    "devDependencies": {
+        "typescript": "^3.0.0"
+    },
+    "dependencies": {
+        "@pulumi/pulumi": "^1.0.0",
+        "@pulumi/random": "latest",
+        "@pulumi/kubernetes": "^1.0.0",
+        "@pulumi/kubernetesx": "latest"
+    }
+}
