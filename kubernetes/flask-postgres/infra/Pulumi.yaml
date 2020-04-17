@@ -1,0 +1,3 @@
+name: flask-app-infra
+description: Deploys a Kubernetes cluster and PostgreSQL DB on AWS
+runtime: nodejs

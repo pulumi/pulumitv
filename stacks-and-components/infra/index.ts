@@ -12,9 +12,10 @@ const password = new random.RandomPassword(`${projectName}-password`, {
 },{ additionalSecretOutputs: ["result"] }).result;
 
 // Create the GKE cluster.
+export const masterVersion = gcp.container.getEngineVersions().latestMasterVersion;
 const cluster = new gcp.container.Cluster(`${projectName}`, {
-    initialNodeCount: 1,
-    minMasterVersion: "1.15.9-gke.22",
+    initialNodeCount: 3,
+    minMasterVersion: masterVersion,
     masterAuth: { username: "example-user", password: password },
 });
 
