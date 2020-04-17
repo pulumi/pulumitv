@@ -1,0 +1,13 @@
+{
+    "name": "flask-app-infra",
+    "devDependencies": {
+        "typescript": "^3.0.0"
+    },
+    "dependencies": {
+        "@pulumi/eks": "^0.18.24",
+        "@pulumi/pulumi": "^2.0.0",
+        "@pulumi/aws": "^2.0.0",
+        "@pulumi/random": "^2.0.0",
+        "@pulumi/awsx": "^0.19.3"
+    }
+}
