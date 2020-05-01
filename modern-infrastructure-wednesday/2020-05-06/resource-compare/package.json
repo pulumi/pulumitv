@@ -5,8 +5,8 @@
         "lint:fix": "eslint '**/*.ts' --fix",
         "format": "prettier --check * '**/*.ts'",
         "format:fix": "prettier --write '*' '**/*.ts'",
-        "test": "mocha",
-        "test:watch": "mocha --watch --reporter min"
+        "test": "mocha '**/*.spec.ts'",
+        "test:watch": "mocha --watch --reporter min '**/*.spec.ts'"
     },
     "devDependencies": {
         "@types/mocha": "^7.0.2",
