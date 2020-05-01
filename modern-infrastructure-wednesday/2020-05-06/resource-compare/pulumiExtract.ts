@@ -20,7 +20,7 @@ export const pulumiTags = {
  */
 export const pulumiExtractLambdaRolePolicyStatements: (
     o: string,
-) => aws.iam.PolicyStatement[] = bucketArn => [
+) => aws.iam.PolicyStatement[] = (bucketArn) => [
     {
         Action: [
             "logs:CreateLogGroup",
@@ -78,7 +78,11 @@ export const pulumiExtractLambdaRole = new aws.iam.Role(
 export const pulumiExtractLambdaRolePolicy = new aws.iam.Policy(
     "pulumi-extract-lambda-role-policy",
     {
-        policy: helpers.makePolicyDocument(pulumiExtractLambdaRolePolicyStatements(config.require("pulumiExtractBucket")))
+        policy: helpers.makePolicyDocument(
+            pulumiExtractLambdaRolePolicyStatements(
+                config.require("pulumiExtractBucket"),
+            ),
+        ),
     },
 );
 
@@ -454,7 +458,7 @@ export const pulumiExtractStepStack = new aws.sfn.StateMachine(
                 pulumiExtractLambda.arn,
                 pulumiCheckStacksUpdatedLambda.arn,
             ])
-            .apply(arns =>
+            .apply((arns) =>
                 JSON.stringify(pulumiExtractStepStackDefinition(...arns)),
             ),
         roleArn: pulumiExtractStepRole.arn,

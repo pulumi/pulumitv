@@ -7,12 +7,14 @@ const bucketName = config.require("ingestBucketName");
 export const ingestLambdaRole = new aws.iam.Role("ingestRole", {
     assumeRolePolicy: {
         Version: "2012-10-17",
-        Statement: [{
-            Action: "sts:AssumeRole",
-            Effect: "Allow",
-            Principal: aws.iam.Principals.LambdaPrincipal,
-        }]
-    }
+        Statement: [
+            {
+                Action: "sts:AssumeRole",
+                Effect: "Allow",
+                Principal: aws.iam.Principals.LambdaPrincipal,
+            },
+        ],
+    },
 });
 
 export const ingestLambdaRolePolicy = new aws.iam.RolePolicy("ingestPolicy", {
@@ -27,11 +29,11 @@ export const ingestLambdaRolePolicy = new aws.iam.RolePolicy("ingestPolicy", {
             {
                 Action: "SNS:Publish",
                 Effect: "Allow",
-                Resource: config.require("ingestTopicArn")
-            }
-        ]
-    }
-})
+                Resource: config.require("ingestTopicArn"),
+            },
+        ],
+    },
+});
 
 //
 // Get AWS config dropped off by the broker in a different account.  We
@@ -108,7 +110,7 @@ export const ingestLambda = new aws.lambda.CallbackFunction(
         description: "Ingest AWSConfig data",
         runtime: aws.lambda.NodeJS12dXRuntime,
         callback: ingestHandler,
-        timeout: 10
+        timeout: 10,
     },
 );
 

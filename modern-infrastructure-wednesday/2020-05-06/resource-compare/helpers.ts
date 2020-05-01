@@ -104,8 +104,8 @@ export const pulumiHttpGet = async (url: string): Promise<AxiosResponse> => {
  */
 export const makePolicyDocument: (
     s: pulumi.Input<aws.iam.PolicyStatement[]>,
-) => pulumi.Output<aws.iam.PolicyDocument> = policyStatements => {
-    return pulumi.output(policyStatements).apply(statements => {
+) => pulumi.Output<aws.iam.PolicyDocument> = (policyStatements) => {
+    return pulumi.output(policyStatements).apply((statements) => {
         return {
             Version: <const>"2012-10-17",
             Statement: statements,

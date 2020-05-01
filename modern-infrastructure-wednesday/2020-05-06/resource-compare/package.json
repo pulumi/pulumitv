@@ -1,7 +1,21 @@
 {
     "name": "2020-05-06",
+    "scripts": {
+        "lint": "eslint '**/*.ts'",
+        "lint:fix": "eslint '**/*.ts' --fix",
+        "format": "prettier --check * '**/*.ts'",
+        "format:fix": "prettier --write '*' '**/*.ts'",
+        "test": "mocha",
+        "test:watch": "mocha --watch --reporter min"
+    },
     "devDependencies": {
-        "@types/node": "^10.0.0"
+        "@types/mocha": "^7.0.2",
+        "@types/node": "^10.0.0",
+        "@typescript-eslint/eslint-plugin": "^2.30.0",
+        "@typescript-eslint/parser": "^2.30.0",
+        "eslint": "^6.8.0",
+        "mocha": "^7.1.2",
+        "prettier": "^2.0.5"
     },
     "dependencies": {
         "@pulumi/aws": "^2.0.0",
@@ -9,5 +23,10 @@
         "@pulumi/pulumi": "^2.0.0",
         "axios": "^0.19.2",
         "typescript": "^3.8.3"
+    },
+    "prettier": {
+        "trailingComma": "all",
+        "tabWidth": 4,
+        "endOfLine": "lf"
     }
 }

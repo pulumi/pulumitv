@@ -23,9 +23,7 @@ export const systemComponentInventoryScriptBucketObject = new aws.s3.BucketObjec
     {
         bucket: config.require("jobScriptsBucket"),
         key: "component_inventory.py",
-        source: new pulumi.asset.FileAsset(
-            "jobs/component_inventory.py",
-        )
+        source: new pulumi.asset.FileAsset("jobs/component_inventory.py"),
     },
 );
 
@@ -46,7 +44,9 @@ export const systemComponentInventoryJob = new aws.glue.Job(
             ),
         },
         defaultArguments: {
-            "--awsconfig-database-name": config.require("awsconfigCatalogDatabase"),
+            "--awsconfig-database-name": config.require(
+                "awsconfigCatalogDatabase",
+            ),
             "--pulumi-database-name": config.require("pulumiCatalogDatabase"),
             "--aws-region": aws.config.region,
             "--output-bucket": config.require("glueJobOutputBucket"),
@@ -57,4 +57,3 @@ export const systemComponentInventoryJob = new aws.glue.Job(
         maxCapacity: 2, // 2 is the lowest number of DPUs we can assign to a glueetl job
     },
 );
-
