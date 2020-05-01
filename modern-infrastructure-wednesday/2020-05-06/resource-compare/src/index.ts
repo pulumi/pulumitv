@@ -2,7 +2,7 @@ import * as pulumi from "@pulumi/pulumi";
 import * as aws from "@pulumi/aws";
 
 export * as configIngest from "./configIngest";
-export * as extract from "./pulumiExtract";
+export * as extract from "./pulumi-extract";
 
 const config = new pulumi.Config("datalake");
 

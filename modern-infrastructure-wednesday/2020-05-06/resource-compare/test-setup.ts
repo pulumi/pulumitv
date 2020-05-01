@@ -50,7 +50,9 @@ pulumi.runtime.setMocks({
                         //
                         // In a test, use JSON.parse to convert back to an
                         // object if desired, e.g.:
-                        //     const { Statement } = JSON.parse(role.assumeRolePolicy ?? "{}");
+                        //     const { Statement } = JSON.parse(
+                        //         (await getOutput(role.assumeRolePolicy)) ?? "{}"
+                        //     );
                         //     assert.deepEqual(Statement, [/* ... */]);
                         //
                         // Additionally, if assumeRolePolicy is configured
