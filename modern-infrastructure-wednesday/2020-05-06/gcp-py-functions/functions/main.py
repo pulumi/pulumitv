@@ -76,4 +76,3 @@ def get_demo(request):
         destination, travel_time_str)
     return send_text(message)
 
-some_val = True
