@@ -86,14 +86,6 @@ export const pulumiExtractLambdaRolePolicy = new aws.iam.Policy(
     },
 );
 
-export const pulumiExtractLambdaRolePolicyAttachment = new aws.iam.RolePolicyAttachment(
-    "pulumi-extract-lambda-role-policy-attachment",
-    {
-        policyArn: pulumiExtractLambdaRolePolicy.arn,
-        role: pulumiExtractLambdaRole.name,
-    },
-);
-
 /**
  * Query the pulumi API for a list of all stacks and their metadata
  * (specifically last update times).
@@ -528,13 +520,5 @@ export const pulumiExtractCloudwatchEventRule = new aws.cloudwatch.EventRule(
         description: "Run Pulumi stack updates daily",
         scheduleExpression: "rate(1 day)",
         tags: pulumiTags,
-    },
-);
-
-export const pulumiExtractCloudwatchEventTarget = new aws.cloudwatch.EventTarget(
-    "foobar",
-    {
-        arn: pulumiExtractStepStack.id,
-        rule: "asdf",
     },
 );
