@@ -100,18 +100,6 @@ export const pulumiGetStackMetadataLambdaCallback = async () => {
     );
 };
 
-// export const pulumiGetStackMetadataLambda = new aws.lambda.CallbackFunction(
-//     "pulumi-get-stack-metadata-lambda",
-//     {
-//         role: pulumiExtractLambdaRole,
-//         description: "Query pulumi API for stack metadata",
-//         runtime: aws.lambda.NodeJS12dXRuntime,
-//         callback: pulumiGetStackMetadataLambdaCallback,
-//         timeout: 10,
-//         tags: pulumiTags,
-//     },
-// );
-
 /*
  * Compare latest pulumi stack update against S3 data to determine if
  * an update is needed.
@@ -182,21 +170,6 @@ export const pulumiNeedS3UpdateLambdaCallback = async (params: any) => {
     return stackMetadata;
 };
 
-// export const pulumiNeedS3UpdateLambda = new aws.lambda.CallbackFunction(
-//     "pulumi-need-s3-update-lambda",
-//     {
-//         role: pulumiExtractLambdaRole,
-//         description: "Compare pulumi stack update against S3 data",
-//         runtime: aws.lambda.NodeJS12dXRuntime,
-//         callback: pulumiNeedS3UpdateLambdaCallback,
-//         codePathOptions: {
-//             extraExcludePackages: ["pulumi-lib-aws"],
-//         },
-//         timeout: 10,
-//         tags: pulumiTags,
-//     },
-// );
-
 /**
  * Download a new stack export from pulumi into S3.
  */
@@ -225,42 +198,12 @@ export const pulumiExtractLambdaCallback = async (params: any) => {
         .promise();
 };
 
-// export const pulumiExtractLambda = new aws.lambda.CallbackFunction(
-//     "pulumi-extract-lambda",
-//     {
-//         role: pulumiExtractLambdaRole,
-//         description: "Extract pulumi stack data",
-//         runtime: aws.lambda.NodeJS12dXRuntime,
-//         callback: pulumiExtractLambdaCallback,
-//         codePathOptions: {
-//             extraExcludePackages: ["pulumi-lib-aws"],
-//         },
-//         timeout: 10,
-//         tags: pulumiTags,
-//     },
-// );
-
 /*
  * Return true if at least one stack was updated.
  */
 export const pulumiCheckStacksUpdatedLambdaCallback = async (params: any) => {
     return params.Input.some((stack: any) => "ETag" in stack);
 };
-
-// export const pulumiCheckStacksUpdatedLambda = new aws.lambda.CallbackFunction(
-//     "pulumi-check-stacks-updated-lambda",
-//     {
-//         role: pulumiExtractLambdaRole,
-//         description: "Determine if any stacks were updated in this run",
-//         runtime: aws.lambda.NodeJS12dXRuntime,
-//         callback: pulumiCheckStacksUpdatedLambdaCallback,
-//         codePathOptions: {
-//             extraExcludePackages: ["pulumi-lib-aws"],
-//         },
-//         timeout: 10,
-//         tags: pulumiTags,
-//     },
-// );
 
 /**
  * Generate IAM policy for use by the pulumi extract step function. This

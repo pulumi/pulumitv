@@ -28,5 +28,6 @@
         "trailingComma": "all",
         "tabWidth": 4,
         "endOfLine": "lf"
-    }
+    },
+    "main": "src/index.ts"
 }
