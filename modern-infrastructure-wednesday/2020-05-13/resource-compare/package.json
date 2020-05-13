@@ -1,5 +1,5 @@
 {
-    "name": "2020-05-06",
+    "name": "ut-example-2020-05-13",
     "scripts": {
         "lint": "eslint '**/*.ts'",
         "lint:fix": "eslint '**/*.ts' --fix",
