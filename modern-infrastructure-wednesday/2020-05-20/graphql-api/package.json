@@ -1,0 +1,12 @@
+{
+    "name": "graphql-api",
+    "devDependencies": {
+        "@types/node": "^10.0.0"
+    },
+    "dependencies": {
+        "@pulumi/gcp": "^3.0.0",
+        "@pulumi/pulumi": "^2.0.0",
+        "apollo-server-cloud-functions": "^2.13.1",
+        "graphql": "^15.0.0"
+    }
+}
