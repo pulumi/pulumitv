@@ -1,7 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as gcp from "@pulumi/gcp";
 import { ApolloServer, gql } from "apollo-server-cloud-functions";
-import * as express from "express";
 
 function factory() {
     // Construct a schema, using GraphQL schema language
