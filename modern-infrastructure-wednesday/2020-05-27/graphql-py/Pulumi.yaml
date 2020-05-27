@@ -1,0 +1,3 @@
+name: graphql-py
+runtime: python
+description: Example of Serverless GraphQL JS program with Python Pulumi program
