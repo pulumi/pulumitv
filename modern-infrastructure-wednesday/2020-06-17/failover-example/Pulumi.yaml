@@ -1,0 +1,4 @@
+name: failover-example
+runtime: python
+description: Example of failover between EC2 site and S3 static site
+
