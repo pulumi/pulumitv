@@ -1,0 +1,19 @@
+name: Pulumi
+on:
+  push:
+    branches:
+      - miw/2020-07-01
+jobs:
+  up:
+    name: Update
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          fetch-depth: 1
+      - uses: docker://pulumi/actions
+        with:
+          args: up --yes
+        env:
+          PULUMI_ROOT: modern-infrastructure-wednesday/2020-07-01/gitception
+          PULUMI_CI: up
