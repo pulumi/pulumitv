@@ -7,7 +7,7 @@ class MyStack : Stack
     {
         var repos = Github.GetRepositories.InvokeAsync(new Github.GetRepositoriesArgs
         {
-            Query = "org:pulumi gitception",
+            Query = "org:<your org> gitception",
         });
  
         foreach (string repo in repos.Result.Names) {
