@@ -1,4 +1,4 @@
-# Modern Infrastructure Wednesday 2020-06-17
+# Modern Infrastructure Wednesday 2020-06-24
 
 In today's episode, we use Lambda@Edge to rewrite requests from Cloudfront to the origin.
 You'll notice there's no code in this directory! That's because today's episode is based on
