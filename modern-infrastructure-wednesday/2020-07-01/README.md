@@ -7,4 +7,4 @@ So, this means you get to have turtles all the way down: managing GitHub via Pul
 If you want to try this in your own GitHub repository, you'll want to copy `.github` and `gitception`
 to the root of your repo.
 
-Watch and follow along at https://youtu.be/yXyDst1RKBY
+Watch and follow along at https://youtu.be/9du5S9_1kM0
