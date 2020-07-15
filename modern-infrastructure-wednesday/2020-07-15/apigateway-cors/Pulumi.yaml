@@ -1,0 +1,3 @@
+name: apigateway-cors
+runtime: nodejs
+description: Example with API Gateway and CORS
