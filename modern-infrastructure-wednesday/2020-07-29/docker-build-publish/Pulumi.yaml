@@ -1,0 +1,6 @@
+name: docker-build-publish
+runtime:
+  name: python
+  options:
+    virtualenv: venv
+description: Build and publish Docker image to Azure Container Registry
