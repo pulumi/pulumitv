@@ -1,0 +1,6 @@
+name: kube2vote
+runtime:
+  name: python
+  options:
+    virtualenv: venv
+description: Example using kube2pulumi
