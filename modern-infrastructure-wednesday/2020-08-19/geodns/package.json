@@ -1,0 +1,10 @@
+{
+    "name": "geodns",
+    "devDependencies": {
+        "@types/node": "^10.0.0"
+    },
+    "dependencies": {
+        "@pulumi/ns1": "^1.0.0",
+        "@pulumi/pulumi": "^2.0.0"
+    }
+}

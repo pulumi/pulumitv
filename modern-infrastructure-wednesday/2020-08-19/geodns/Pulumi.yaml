@@ -1,0 +1,3 @@
+name: geodns
+runtime: nodejs
+description: NS1 example with GeoDNS
