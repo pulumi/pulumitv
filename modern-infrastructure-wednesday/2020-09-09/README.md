@@ -4,5 +4,5 @@ In today's episode, we use AWS Lambda to use the PyTorch machine learning librar
 We setup a Lambda function to do the recognition with PyTorch as a Lambda layer.
 Then, we connect the function to an Amazon API Gateway in order to allow our function to be invoked from anywhere.
 
-Watch and follow along at https://youtu.be/yY1NboXEuds
+Watch and follow along at https://youtu.be/jZQBc3G8-qY
 
