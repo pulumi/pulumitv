@@ -1,0 +1,6 @@
+name: pytorch-example
+runtime:
+  name: python
+  options:
+    virtualenv: venv
+description: Pulumi Pytorch example
