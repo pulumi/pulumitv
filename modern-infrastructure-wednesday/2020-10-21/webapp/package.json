@@ -1,0 +1,21 @@
+{
+    "name": "webapp",
+    "dependencies": {
+        "@pulumi/aws": "^3.0.0",
+        "@pulumi/awsx": "^0.22.0",
+        "@pulumi/pulumi": "^2.0.0",
+        "@yarnpkg/lockfile": "^1.1.0",
+        "mime": "^2.4.6",
+        "yargs": "^16.0.3"
+    },
+    "scripts": {
+        "start": "ts-node index.ts"
+    },
+    "devDependencies": {
+        "@types/mime": "^2.0.3",
+        "@types/node": "^14.11.8",
+        "@types/yargs": "^15.0.8",
+        "@types/yarnpkg__lockfile": "^1.1.4",
+        "ts-node": "^9.0.0"
+    }
+}
