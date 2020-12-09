@@ -1,0 +1,3 @@
+name: lambda-containers
+runtime: python
+description: Example of using AWS Lambda's container support
