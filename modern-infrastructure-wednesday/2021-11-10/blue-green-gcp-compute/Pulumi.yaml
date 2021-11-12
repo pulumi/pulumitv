@@ -1,0 +1,6 @@
+name: miw-32
+runtime:
+  name: python
+  options:
+    virtualenv: venv
+description: A simple Python server running on Google Cloud Compute with Instance Groups to demo upgrades.
