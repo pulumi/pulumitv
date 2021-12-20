@@ -1,4 +1,4 @@
-[![Deploy](https://get.pulumi.com/new/button.svg)](https://app.pulumi.com/new)
+[![Deploy](https://get.pulumi.com/new/button.svg)](https://app.pulumi.com/new?template=https://github.com/pulumi/pulumitv/blob/master/modern-infrastructure-wednesday/2020-05-06/gcp-py-functions/README.md)
 
 # Google Cloud Functions
 

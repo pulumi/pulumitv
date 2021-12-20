@@ -1,4 +1,4 @@
-[![Deploy](https://get.pulumi.com/new/button.svg)](https://app.pulumi.com/new)
+[![Deploy](https://get.pulumi.com/new/button.svg)](https://app.pulumi.com/new?template=https://github.com/pulumi/pulumitv/blob/master/integration-testing/py-gke/README.md)
 
 # Google Kubernetes Engine (GKE) with a Canary Deployment
 
