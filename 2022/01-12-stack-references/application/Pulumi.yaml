@@ -1,0 +1,3 @@
+name: application
+runtime: dotnet
+description: A minimal Kubernetes F# Pulumi program

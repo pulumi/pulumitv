@@ -1,0 +1,3 @@
+name: platform
+runtime: go
+description: A minimal Civo Go Pulumi program
