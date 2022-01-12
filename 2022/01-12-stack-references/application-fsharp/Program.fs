@@ -6,29 +6,29 @@ open Pulumi.Kubernetes.Types.Inputs.Core.V1
 open Pulumi.Kubernetes.Types.Inputs.Apps.V1
 open Pulumi.Kubernetes.Types.Inputs.Meta.V1
 
-let platform =
-    StackReference("platform", StackReferenceArgs(Name = "platform"))
-
-let kubernetesProvider =
-    Kubernetes.Provider(
-        "kubernetesProvider",
-        Kubernetes.ProviderArgs(
-            KubeConfig =
-                platform
-                    .RequireOutput("kubeConfig")
-                    .Apply(fun v -> v.ToString())
-                    .ToString()
-        )
-    )
-
-
 let infra () =
+
+    let platform =
+        StackReference("rawkode/platform/platform")
+
+    let kubernetesProvider =
+        Kubernetes.Provider(
+            "kubernetesProvider",
+            Kubernetes.ProviderArgs(
+                KubeConfig =
+                    io (
+                        platform
+                            .RequireOutput(input ("kubeconfig"))
+                            .Apply(fun v -> v.ToString())
+                    )
+            )
+        )
 
     let appLabels = inputMap [ "app", input "nginx" ]
 
     let deployment =
         Pulumi.Kubernetes.Apps.V1.Deployment(
-            "nginx",
+            "fs-nginx",
             DeploymentArgs(
                 Spec =
                     input (
