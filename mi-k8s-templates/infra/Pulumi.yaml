@@ -1,0 +1,6 @@
+name: infra-mi-k8s
+description: A Python program to deploy a Kubernetes cluster on Google Cloud
+runtime:
+    name: python
+    options:
+        virtualenv: venv

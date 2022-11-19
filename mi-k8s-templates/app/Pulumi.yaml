@@ -1,0 +1,6 @@
+name: mi-k8s-app
+description: A Python program to deploy a web application onto a Kubernetes cluster
+runtime:
+    name: python
+    options:
+        virtualenv: venv

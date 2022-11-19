@@ -1,0 +1,19 @@
+[tool.poetry]
+name = "mi-k8s"
+version = "0.1.0"
+description = "MI"
+authors = ["Laura Santamaria <laura@nimbinatus.com>"]
+license = "MIT"
+readme = "README.md"
+packages = [{include = "mi_k8s"}]
+
+[tool.poetry.dependencies]
+python = "^3.10"
+pulumi = "^3.47.1"
+pulumi-gcp = "^6.43.0"
+pulumi-kubernetes = "^3.22.1"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
