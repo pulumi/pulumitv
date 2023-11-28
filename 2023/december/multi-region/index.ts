@@ -8,12 +8,20 @@ const storageKind = config.require("storageKind");
 const storageSkuName = config.require("storageSkuName");
 
 const tags = {
-    "createdby": "multi-region-esting-team",
+    "createdby": "multi-region-testing-team",
     "environment": stackName
 }
 
+const appServicePlanName = `${resourceNamePrefix}-plan`;
+const appServiceName = `${resourceNamePrefix}-app`;
+const cosmosDbAccountName = `${resourceNamePrefix}-cosmos-db`;
+const dbContainerName = `${resourceNamePrefix}`;
+const dbName = `${resourceNamePrefix}-db`;
+const keyVaultName = `${resourceNamePrefix}-keyvault`;
 const resourceGroupName = `${resourceNamePrefix}-rg`;
 const storageAccountName = `${resourceNamePrefix}str`;
+const subnetName = `${resourceNamePrefix}-subnet`;
+const vnetName = `${resourceNamePrefix}-vnet`;
 
 // Create an Azure Resource Group
 const resourceGroup = new azure.resources.ResourceGroup(resourceGroupName, {
@@ -32,8 +40,9 @@ const storageAccount = new azure.storage.StorageAccount(storageAccountName, {
     tags
 });
 
-// Create an Azure Web App
-const plan = new azure.web.AppServicePlan("plan", {
+// Create an Azure App Service Plan
+const plan = new azure.web.AppServicePlan(appServicePlanName, {
+    name: appServicePlanName,
     resourceGroupName: resourceGroup.name,
     sku: {
         capacity: 1,
@@ -46,24 +55,26 @@ const plan = new azure.web.AppServicePlan("plan", {
 });
 
 // Create a Virtual Network with a Subnet
-const network = new azure.network.VirtualNetwork("network", {
+const network = new azure.network.VirtualNetwork(vnetName, {
+    virtualNetworkName: vnetName,
     resourceGroupName: resourceGroup.name,
     addressSpace: {
         addressPrefixes: ["10.0.0.0/16"],
     },
     tags
 });
-const subnet = new azure.network.Subnet("subnet", {
+const subnet = new azure.network.Subnet(subnetName, {
+    subnetName: subnetName,
     resourceGroupName: resourceGroup.name,
     virtualNetworkName: network.name,
     addressPrefix: "10.0.1.0/24",
 });
 
 // Create an Azure Cosmos DB account, a SQL database and a container named "app-db".
-const cosmosdbAccount = new azure.documentdb.DatabaseAccount("cosmosdbAccount", {
+const cosmosdbAccount = new azure.documentdb.DatabaseAccount(cosmosDbAccountName, {
     resourceGroupName: resourceGroup.name,
     location: resourceGroup.location,
-    accountName: "adora-custom-codmos88",
+    accountName: cosmosDbAccountName,
     createMode: "Default",
     databaseAccountOfferType: azure.documentdb.DatabaseAccountOfferType.Standard,
     locations: [{
@@ -74,23 +85,23 @@ const cosmosdbAccount = new azure.documentdb.DatabaseAccount("cosmosdbAccount", 
     tags
 });
 
-const sqlDatabase = new azure.documentdb.SqlResourceSqlDatabase("sqlDatabase", {
+const sqlDatabase = new azure.documentdb.SqlResourceSqlDatabase(dbName, {
     resourceGroupName: resourceGroup.name,
     accountName: cosmosdbAccount.name,
-    databaseName: "databaseName",
+    databaseName: dbName,
     location: "West US",
     options: {},
     resource: {
-        id: "databaseName",
+        id: dbName,
     },
     tags
 });
 
-const sqlContainer = new azure.documentdb.SqlResourceSqlContainer("app-db", {
+const sqlContainer = new azure.documentdb.SqlResourceSqlContainer(dbContainerName, {
     resourceGroupName: resourceGroup.name,
     accountName: cosmosdbAccount.name,
     databaseName: sqlDatabase.name,
-    containerName: "containerName",
+    containerName: dbContainerName,
     location: "West US",
     options: {},
     resource: {
@@ -155,7 +166,8 @@ pulumi.all([resourceGroup.name, cosmosdbAccount.name, tenantId]).apply(([resourc
     const cosmosdbConnectionString = connectionStrings.then(cs => cs.connectionStrings![0].connectionString);
 
     // Save it to the KeyVault
-    const vault = new azure.keyvault.Vault("vault", {
+    const vault = new azure.keyvault.Vault(keyVaultName, {
+        vaultName: keyVaultName,
         resourceGroupName: resourceGroup.name,
         location: resourceGroup.location,
         properties: {
@@ -169,7 +181,7 @@ pulumi.all([resourceGroup.name, cosmosdbAccount.name, tenantId]).apply(([resourc
         tags
     });
 
-    const secret = new azure.keyvault.Secret("cosmosConnectionString", {
+    const secret = new azure.keyvault.Secret(`${resourceNamePrefix}-cosmosConnectionString`, {
         secretName: "cosmosConnectionString",
         vaultName: vault.name,
         resourceGroupName: resourceGroup.name,
@@ -182,7 +194,8 @@ pulumi.all([resourceGroup.name, cosmosdbAccount.name, tenantId]).apply(([resourc
     // Get the secret's URI
     const secretUri = pulumi.interpolate`${vault.properties.vaultUri}secrets/${secret.name}`;
 
-    const app = new azure.web.WebApp("app", {
+    const app = new azure.web.WebApp(appServiceName, {
+        name: appServiceName,
         resourceGroupName: resourceGroup.name,
         serverFarmId: plan.id,
         siteConfig: {
