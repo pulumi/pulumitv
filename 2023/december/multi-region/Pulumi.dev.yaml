@@ -1,0 +1,5 @@
+config:
+  azure-native:location: westus2
+  multi-region:resourceNamePrefix: multiregionappdev
+  multi-region:storageKind: StorageV2
+  multi-region:storageSkuName: Standard_LRS

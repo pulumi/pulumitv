@@ -1,0 +1,5 @@
+config:
+  azure-native:location: eastus
+  multi-region:resourceNamePrefix: multiregionappprd
+  multi-region:storageKind: StorageV2
+  multi-region:storageSkuName: Standard_LRS
